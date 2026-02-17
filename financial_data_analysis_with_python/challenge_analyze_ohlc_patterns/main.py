@@ -23,10 +23,9 @@ df.set_index("Date", inplace=True)
 
 # Calculate daily range (High - Low) and add as a new column
 df["Range"] = df["High"] - df["Low"]
-# Now add this new column to the DataFrame
-df = df.add_column[df["Range"]] ?????
 
 # Identify days where Close > Open and Close > previous day's Close
+df["Prev_Close"] = df["Close"].shift(1)
 mask = (df["Close"] > df["Open"]) & (df["Close"] > df["Prev_Close"])
 
 # Output the list of dates (YYYY-MM-DD format) that match the pattern
